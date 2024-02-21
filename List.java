@@ -86,6 +86,7 @@ public class List {
                 current.cp.count++;
                 return;
             }
+            current = current.next;
         }
         this.addFirst(chr);
         size++;
