@@ -42,7 +42,6 @@ public class List {
             current.next = newNode;
         }
         size++;
-        return;
     }
     
     /** GIVE Textual representation of this list. */
@@ -62,6 +61,7 @@ public class List {
      *  or -1 if there is no such object in this list. */
     public int indexOf(char chr) {
         // Your code goes here
+        return 0;
     }
 
     /** If the given character exists in one of the CharData objects in this list,
@@ -69,6 +69,7 @@ public class List {
      *  given chr to the beginning of this list. */
     public void update(char chr) {
         // Your code goes here
+        return;
     }
 
     /** GIVE If the given character exists in one of the CharData objects
@@ -76,6 +77,7 @@ public class List {
      *  true. Otherwise, returns false. */
     public boolean remove(char chr) {
         // Your code goes here
+        return false;
     }
 
     /** Returns the CharData object at the specified index in this list. 
@@ -83,6 +85,7 @@ public class List {
      *  throws an IndexOutOfBoundsException. */
     public CharData get(int index) {
         // Your code goes here
+        return null;
     }
 
     /** Returns an array of CharData objects, containing all the CharData objects in this list. */
