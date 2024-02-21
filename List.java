@@ -73,7 +73,6 @@ public class List {
             index++;
         }
         return -1;
-        
     }
 
     /** If the given character exists in one of the CharData objects in this list,
@@ -81,7 +80,17 @@ public class List {
      *  given chr to the beginning of this list. */
     public void update(char chr) {
         // Your code goes here
-        return;
+        if (indexOf(chr) == -1) {
+            addFirst(chr);
+            return;
+        }
+        Node current = first;
+        while (current != null) {
+            if (current.cp.chr == chr) {
+                current.cp.count++;
+                return;
+            }
+        }
     }
 
     /** GIVE If the given character exists in one of the CharData objects
