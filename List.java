@@ -42,6 +42,7 @@ public class List {
             current.next = newNode;
         }
         size++;
+        return;
     }
     
     /** GIVE Textual representation of this list. */
