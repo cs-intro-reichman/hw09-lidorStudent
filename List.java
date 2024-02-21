@@ -32,15 +32,8 @@ public class List {
         // Your code goes here
         CharData newData = new CharData(chr);
         Node newNode = new Node(newData);
-        if (first == null) {
-            first = newNode;
-        } else {
-            Node current = first;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
-        }
+        newNode.next = first;
+        first = newNode;
         size++;
     }
     
