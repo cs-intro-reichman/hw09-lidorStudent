@@ -49,7 +49,10 @@ public class List {
         String answer = "(";
         Node current = first;
         while (current != null) {
-            answer += current.cp.toString() + " ";
+            answer += current.cp.toString();
+            if (current.next != null) {
+                answer += " ";
+            }
             current = current.next;
         }
         return answer + ")";
