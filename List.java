@@ -46,13 +46,13 @@ public class List {
     /** GIVE Textual representation of this list. */
     public String toString() {
         // Your code goes here
-        String answer = "";
+        String answer = "(";
         Node current = first;
         while (current != null) {
             answer += current.cp.toString() + " ";
             current = current.next;
         }
-        return answer;
+        return answer + ")";
     }
 
     /** Returns the index of the first CharData object in this list
