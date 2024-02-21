@@ -30,11 +30,30 @@ public class List {
     /** GIVE Adds a CharData object with the given character to the beginning of this list. */
     public void addFirst(char chr) {
         // Your code goes here
+        CharData newData = new CharData(chr);
+        Node newNode = new Node(newData);
+        if (first == null) {
+            first = newNode;
+        } else {
+            Node current = first;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+        size++;
     }
     
     /** GIVE Textual representation of this list. */
     public String toString() {
         // Your code goes here
+        String answer = "";
+        Node current = first;
+        while (current != null) {
+            answer += current.cp.toString();
+            current = current.next;
+        }
+        return answer;
     }
 
     /** Returns the index of the first CharData object in this list
