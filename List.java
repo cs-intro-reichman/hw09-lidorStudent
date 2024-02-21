@@ -73,6 +73,7 @@ public class List {
             index++;
         }
         return -1;
+        
     }
 
     /** If the given character exists in one of the CharData objects in this list,
