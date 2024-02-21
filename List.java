@@ -88,6 +88,7 @@ public class List {
             }
         }
         this.addFirst(chr);
+        size++;
     }
 
     /** GIVE If the given character exists in one of the CharData objects
@@ -116,6 +117,7 @@ public class List {
         }
         previous.next = current.next;
         current.next = null;
+        size--;
         return true;
     }
 
@@ -124,7 +126,17 @@ public class List {
      *  throws an IndexOutOfBoundsException. */
     public CharData get(int index) {
         // Your code goes here
-        return null;
+        Node current = first;
+        if (index < 0 || index > this.size) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (first == null) {
+            return null;
+        }
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.cp;
     }
 
     /** Returns an array of CharData objects, containing all the CharData objects in this list. */
