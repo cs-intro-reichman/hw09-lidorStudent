@@ -79,7 +79,7 @@ public class List {
      *  increments its counter. Otherwise, adds a new CharData object with the
      *  given chr to the beginning of this list. */
     public void update(char chr) {
-        // Your code goes here    
+        // Your code goes here  
         Node current = first;
         while (current != null) {
             if (current.cp.chr == chr) {
@@ -95,7 +95,28 @@ public class List {
      *  true. Otherwise, returns false. */
     public boolean remove(char chr) {
         // Your code goes here
-        return false;
+        Node previous = null;
+        Node current = first;
+        if (this.indexOf(chr) == -1) {
+            return false;
+        }
+        if (first == null) {
+            return false;
+        }
+        while (current != null && current.cp.chr != chr) {
+            previous = current;
+            current = current.next;
+        }
+        if (current == null) {
+            return false;
+        }
+        if (previous == null) {
+            first = first.next;
+            return true;
+        }
+        previous.next = current.next;
+        current.next = null;
+        return true;
     }
 
     /** Returns the CharData object at the specified index in this list. 
