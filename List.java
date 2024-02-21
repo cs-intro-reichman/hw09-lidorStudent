@@ -32,8 +32,14 @@ public class List {
         // Your code goes here
         CharData newData = new CharData(chr);
         Node newNode = new Node(newData);
-        newNode.next = first;
-        first = newNode;
+        if (first == null) {
+            newNode.next = first;
+            first = newNode;
+        } else {
+            Node current = first;
+            newNode.next = current;
+            first = newNode;
+        }
         size++;
     }
     
