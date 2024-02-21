@@ -87,7 +87,7 @@ public class List {
                 return;
             }
         }
-        addFirst(chr);
+        this.addFirst(chr);
     }
 
     /** GIVE If the given character exists in one of the CharData objects
