@@ -19,7 +19,7 @@ public class List {
 
     /** Returns the number of elements in this list. */
     public int getSize() {
- 	      return size;
+ 	    return size;
     }
 
     /** Returns the first element in the list */
@@ -49,7 +49,7 @@ public class List {
         String answer = "";
         Node current = first;
         while (current != null) {
-            answer += current.cp.toString();
+            answer += current.cp.toString() + " ";
             current = current.next;
         }
         return answer;
