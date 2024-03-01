@@ -109,16 +109,16 @@ public class LanguageModel {
 	 */
 	public String generate(String initialText, int textLength) {
 		// Your code goes here
-        String generatedText = "";
-        while (generatedText.length() < initialText.length() + textLength) {
-            String lastWindow = generatedText.substring(generatedText.length() - initialText.length());
-            List probs = CharDataMap.get(lastWindow);
-
-            if (probs != null && probs.getSize() != 0) {
-                char generatedChar = getRandomChar(probs);
-                generatedText += generatedChar;
+        if (initialText.length() < windowLength) {
+            return initialText;
+        }
+        String generatedText = initialText;
+        for (int i = 0; i < textLength; i++) {
+            String lastSubstring = generatedText.substring(generatedText.length() - initialText.length());
+            if (CharDataMap.containsKey(lastSubstring)) {
+                char nextChar = getRandomChar(CharDataMap.get(lastSubstring));
+                generatedText += nextChar;
             } else {
-                // Break if the last window is not found in the probabilities map
                 break;
             }
         }
@@ -137,13 +137,5 @@ public class LanguageModel {
 
     public static void main(String[] args) {
 		// Your code goes here
-        LanguageModel model = new LanguageModel(3);
-        String word = "computer_science";
-        List list = new List(); 
-        for (int i = 0; i < word.length(); i++) {
-            list.update(word.charAt(word.length() - 1 - i));
-        }
-        model.calculateProbabilities(list);
-        System.out.println(list.toString());
     }
 }
