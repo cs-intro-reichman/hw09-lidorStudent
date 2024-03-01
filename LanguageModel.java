@@ -63,23 +63,26 @@ public class LanguageModel {
 	// characters in the given list. */
 	public void calculateProbabilities(List probs) {				
 		// Your code goes here
-        CharData current = null;
-        CharData previous = null;
-        double count = 0;
-        for (int i = 0; i < probs.getSize(); i++) {
-            current = probs.get(i);
-            count += current.count;
+        if (probs.getSize() <= 0 || probs == null) {
+            return;
         }
-        if (count == 0) return;
-        for (int i = 0; i < probs.getSize(); i++) {
-            current = probs.get(i);
-            current.p = current.count / count;
+        if (probs.getFirst() == null) {
+            return;
         }
-        probs.get(0).cp = probs.get(0).p;
-        for (int i = 1; i < probs.getSize(); i++) {
-            current = probs.get(i);
-            previous = probs.get(i - 1);
-            current.cp = previous.cp + current.p;
+        int totalCount = 0;
+        ListIterator iterator = probs.listIterator(0);
+        while (iterator.hasNext()) {
+            totalCount += iterator.next().count;
+        }
+        if (totalCount == 0) return; 
+        iterator = probs.listIterator(0);
+        double cp = 0;
+        while (iterator.hasNext()) {
+            CharData charData = iterator.next();
+            double probability = (double) charData.count / totalCount;
+            charData.p = probability;
+            cp += probability;
+            charData.cp = cp;
         }
 	}
 
@@ -134,5 +137,13 @@ public class LanguageModel {
 
     public static void main(String[] args) {
 		// Your code goes here
+        LanguageModel model = new LanguageModel(3);
+        String word = "computer_science";
+        List list = new List(); 
+        for (int i = 0; i < word.length(); i++) {
+            list.update(word.charAt(word.length() - 1 - i));
+        }
+        model.calculateProbabilities(list);
+        System.out.println(list.toString());
     }
 }
