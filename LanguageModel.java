@@ -34,17 +34,37 @@ public class LanguageModel {
     /** Builds a language model from the text in the given file (the corpus). */
 	public void train(String fileName) {
 		// Your code goes here
+        return;
 	}
 
     // Computes and sets the probabilities (p and cp fields) of all the
 	// characters in the given list. */
 	public void calculateProbabilities(List probs) {				
 		// Your code goes here
+        CharData current = null;
+        CharData previous = null;
+        double count = 0;
+        for (int i = 0; i < probs.getSize(); i++) {
+            current = probs.get(i);
+            count += current.count;
+        }
+        if (count == 0) return;
+        for (int i = 0; i < probs.getSize(); i++) {
+            current = probs.get(i);
+            current.p = current.count / count;
+        }
+        probs.get(0).cp = probs.get(0).p;
+        for (int i = 1; i < probs.getSize(); i++) {
+            current = probs.get(i);
+            previous = probs.get(i - 1);
+            current.cp = previous.cp + current.p;
+        }
 	}
 
     // Returns a random character from the given probabilities list.
 	public char getRandomChar(List probs) {
 		// Your code goes here
+        return 'a';
 	}
 
     /**
@@ -56,6 +76,7 @@ public class LanguageModel {
 	 */
 	public String generate(String initialText, int textLength) {
 		// Your code goes here
+        return "";
 	}
 
     /** Returns a string representing the map of this language model. */
@@ -70,5 +91,6 @@ public class LanguageModel {
 
     public static void main(String[] args) {
 		// Your code goes here
+        return;
     }
 }
